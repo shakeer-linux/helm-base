@@ -4,7 +4,18 @@
 
 
 ````
+root@ubuntu16Desktop:~# kubectl cluster-info
+Kubernetes master is running at https://192.168.11.50:6443
+KubeDNS is running at https://192.168.11.50:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+root@ubuntu16Desktop:~#
+
+
+root@ubuntu16Desktop:~# kubectl config get-contexts
+CURRENT   NAME                          CLUSTER      AUTHINFO           NAMESPACE
+*         kubernetes-admin@kubernetes   kubernetes   kubernetes-admin
+root@ubuntu16Desktop:~#
 
 root@ubuntu16Desktop:~#mkdir helm
 
