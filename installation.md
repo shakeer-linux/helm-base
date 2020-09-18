@@ -64,19 +64,6 @@ To prevent this, run `helm init` with the --tiller-tls-verify flag.
 For more information on securing your installation see: https://v2.helm.sh/docs/securing_installation/
 root@ubuntu16Desktop:~/helm#
 
-root@ubuntu16Desktop:~/helm# kubectl get pods --namespace kube-system
-NAME                                      READY   STATUS              RESTARTS   AGE
-coredns-66bff467f8-2f5fl                  1/1     Running             32         39d
-coredns-66bff467f8-rx9zr                  1/1     Running             32         39d
-etcd-ubuntu16desktop                      1/1     Running             34         39d
-kube-apiserver-ubuntu16desktop            1/1     Running             37         39d
-kube-controller-manager-ubuntu16desktop   1/1     Running             62         39d
-kube-flannel-ds-amd64-7w687               1/1     Running             40         39d
-kube-proxy-28dvr                          1/1     Running             32         39d
-kube-scheduler-ubuntu16desktop            1/1     Running             61         39d
-kube-state-metrics-7ffcdb8cfc-jjd58       1/1     Running             31         39d
-tiller-deploy-569797587b-d8tgg            0/1     ContainerCreating   0          23s
-root@ubuntu16Desktop:~/helm#
 
 root@ubuntu16Desktop:~/helm# kubectl get pods --namespace kube-system | grep tiller
 tiller-deploy-569797587b-d8tgg            0/1     ContainerCreating   0          30s
@@ -87,12 +74,74 @@ tiller-deploy-569797587b-d8tgg            0/1     ContainerCreating   0         
 root@ubuntu16Desktop:~/helm#
 
 root@ubuntu16Desktop:~/helm# kubectl get pods --namespace kube-system | grep tiller
-tiller-deploy-569797587b-d8tgg            0/1     ContainerCreating   0          40s
-root@ubuntu16Desktop:~/helm#
-
-root@ubuntu16Desktop:~/helm# kubectl get pods --namespace kube-system | grep tiller
 tiller-deploy-569797587b-d8tgg            1/1     Running   0          104s
 root@ubuntu16Desktop:~/helm#
+
+
+root@ubuntu16Desktop:~# helm list
+root@ubuntu16Desktop:~#
+
+
+root@ubuntu16Desktop:~# helm install stable/kubernetes-dashboard --name dashboard-demo
+WARNING: This chart is deprecated
+NAME:   dashboard-demo
+LAST DEPLOYED: Fri Sep 18 22:03:33 2020
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Deployment
+NAME                                 READY  UP-TO-DATE  AVAILABLE  AGE
+dashboard-demo-kubernetes-dashboard  0/1    1           0          0s
+
+==> v1/Pod(related)
+NAME                                                  READY  STATUS             RESTARTS  AGE
+dashboard-demo-kubernetes-dashboard-588cbd9ffc-5txsp  0/1    ContainerCreating  0         1s
+
+==> v1/Role
+NAME                                 CREATED AT
+dashboard-demo-kubernetes-dashboard  2020-09-18T16:33:34Z
+
+==> v1/RoleBinding
+NAME                                 ROLE                                      AGE
+dashboard-demo-kubernetes-dashboard  Role/dashboard-demo-kubernetes-dashboard  0s
+
+==> v1/Secret
+NAME                                 TYPE    DATA  AGE
+dashboard-demo-kubernetes-dashboard  Opaque  0     0s
+
+==> v1/Service
+NAME                                 TYPE       CLUSTER-IP   EXTERNAL-IP  PORT(S)  AGE
+dashboard-demo-kubernetes-dashboard  ClusterIP  10.99.5.170  <none>       443/TCP  0s
+
+==> v1/ServiceAccount
+NAME                                 SECRETS  AGE
+dashboard-demo-kubernetes-dashboard  1        0s
+
+
+NOTES:
+*********************************************************************************
+*** PLEASE BE PATIENT: kubernetes-dashboard may take a few minutes to install ***
+*********************************************************************************
+
+Get the Kubernetes Dashboard URL by running:
+  export POD_NAME=$(kubectl get pods -n default -l "app=kubernetes-dashboard,release=dashboard-demo" -o jsonpath="{.items[0].metadata.name}")
+  echo https://127.0.0.1:8443/
+  kubectl -n default port-forward $POD_NAME 8443:8443
+
+root@ubuntu16Desktop:~#
+
+
+root@ubuntu16Desktop:~# helm list
+NAME          	REVISION	UPDATED                 	STATUS  	CHART                      	APP VERSION	NAMESPACE
+dashboard-demo	1       	Fri Sep 18 22:03:33 2020	DEPLOYED	kubernetes-dashboard-1.11.1	1.10.1     	default
+root@ubuntu16Desktop:~#
+
+
+root@ubuntu16Desktop:~# helm delete dashboard-demo
+release "dashboard-demo" deleted
+root@ubuntu16Desktop:~#
+
 
 
 ```
