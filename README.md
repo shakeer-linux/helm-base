@@ -1,1 +1,1 @@
-# helm-installtion.md
+# helm installation and configurations
