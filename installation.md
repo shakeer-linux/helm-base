@@ -142,9 +142,7 @@ root@ubuntu16Desktop:~# helm delete dashboard-demo
 release "dashboard-demo" deleted
 root@ubuntu16Desktop:~#
 
-
-
-```
+````
 
 
 
