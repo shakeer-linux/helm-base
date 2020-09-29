@@ -62,6 +62,12 @@ Visit https://github.com/coreos/prometheus-operator for instructions on how
 to create & configure Alertmanager and Prometheus instances using the Operator.
 root@ubuntu16d-k8s1:~/helm-prometheus#
 
+root@ubuntu16d-k8s1:~/helm-prometheus# helm ls -n monitoring
+NAME           	NAMESPACE 	REVISION	UPDATED                               	STATUS  	CHART                    	APP VERSION
+prometheus-demo	monitoring	1       	2020-09-29 18:28:42.70546611 +0530 IST	deployed	prometheus-operator-9.3.2	0.38.1
+root@ubuntu16d-k8s1:~/helm-prometheus#
+
+
 root@ubuntu16d-k8s1:~/helm-prometheus# kubectl --namespace monitoring get pods -l "release=prometheus-demo"
 NAME                                                   READY   STATUS    RESTARTS   AGE
 prometheus-demo-prometheus-node-exporter-gddqg         1/1     Running   0          43m
