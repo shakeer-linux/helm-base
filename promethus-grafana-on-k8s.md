@@ -117,6 +117,10 @@ root@ubuntu16d-k8s1:~/helm-prometheus# kubectl port-forward --address 0.0.0.0 -n
 [3] 847
 root@ubuntu16d-k8s1:~/helm-prometheus#
 
+```
+#### Get the Grafana Dashboard Password
+
+```
 
 root@ubuntu16d-k8s1:~/helm-prometheus# kubectl get secret --namespace monitoring prometheus-demo-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 prom-operator
