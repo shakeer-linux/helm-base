@@ -145,3 +145,16 @@ root@ubuntu16Desktop:~#
 
 
 ```
+
+
+
+#### Removing Helm from kubernetes cluster
+
+
+```
+root@ubuntu16d-k8s1:~/helm-prometheus# helm reset --force
+
+root@ubuntu16d-k8s1:~/helm-prometheus# rm /usr/local/bin/helm
+
+```
+
