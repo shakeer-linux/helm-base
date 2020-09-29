@@ -156,3 +156,26 @@ root@ubuntu16d-k8s1:~/helm-prometheus# rm /usr/local/bin/helm
 
 ```
 
+#### Installing Helm Version 3.3.4
+
+
+```
+root@ubuntu16d-k8s1:~/helm-prometheus# curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+
+root@ubuntu16d-k8s1:~/helm-prometheus# chmod 700 get_helm.sh
+
+
+root@ubuntu16d-k8s1:~/helm-prometheus# ./get_helm.sh
+Downloading https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz
+Verifying checksum... Done.
+Preparing to install helm into /usr/local/bin
+helm installed into /usr/local/bin/helm
+root@ubuntu16d-k8s1:~/helm-prometheus#
+
+
+root@ubuntu16d-k8s1:~/helm-prometheus# helm version
+version.BuildInfo{Version:"v3.3.4", GitCommit:"a61ce5633af99708171414353ed49547cf05013d", GitTreeState:"clean", GoVersion:"go1.14.9"}
+root@ubuntu16d-k8s1:~/helm-prometheus#
+
+```
+
