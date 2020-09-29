@@ -118,6 +118,10 @@ root@ubuntu16d-k8s1:~/helm-prometheus# kubectl port-forward --address 0.0.0.0 -n
 root@ubuntu16d-k8s1:~/helm-prometheus#
 
 
+root@ubuntu16d-k8s1:~/helm-prometheus# kubectl get secret --namespace monitoring prometheus-demo-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+prom-operator
+root@ubuntu16d-k8s1:~/helm-prometheus#
+
 ```
 
 Ref: https://rancher.com/blog/2020/custom-monitoring
